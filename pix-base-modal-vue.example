@@ -1,0 +1,49 @@
+<template>
+    <div class="modal fade" data-bs-keyboard="false" id="baseModal">
+        <div class="modal-dialog" :class="'modal-'+ size" role="document">
+            <div class="modal-content">
+                <pix-overlay :show="loading">
+                    <component @set-size="setSize" :is="component" @loading="setLoading" v-bind="attributes"></component>
+                </pix-overlay>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<script>
+
+import pixBaseModalFunctions from './../tools/pix-components/pix-base-modal-functionalities.js';
+import { Modal } from "bootstrap";
+
+export default {
+    props: {
+    },
+
+    mixins: [
+        pixBaseModalFunctions
+    ],
+
+    components: {},
+
+    data() {
+        return {
+
+        }
+    },
+
+    methods: {
+    },
+
+    mounted() {
+
+    },
+
+    created() {
+
+    },
+
+    computed: {
+    }
+}
+</script>

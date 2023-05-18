@@ -1,0 +1,43 @@
+<template>
+    <a @click="openModal(component)" href="javascript:void(0);">
+        <slot></slot>
+    </a>
+</template>
+
+<script>
+export default {
+    props: {
+        component: String,
+    },
+
+    components: {
+    },
+
+    data() {
+        return {
+            // vueForm: new VueForm5()
+        }
+    },
+
+    methods: {
+        openModal(component) {
+            this.emitter.emit('open-modal', {component: component, attributes: this.$attrs});
+        },
+    },
+
+    mounted() {
+    },
+
+    created() {
+        // Event.('event', () => {});
+    },
+
+    computed: {
+        // func() {}
+    }
+}
+</script>
+
+<style scoped>
+
+</style>

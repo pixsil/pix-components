@@ -1,0 +1,121 @@
+// v2 > uni_b2b -->
+
+<template>
+    <div class="position-relative">
+        <nav class="bottom-navbar" :class="is_open ? 'header-toggled position-absolute' : 'd-md-block d-none'">
+            <div class="container-fluid">
+                <ul class="nav page-navigation page-navigation-no-between">
+                    <li class="nav-item nav-item-extend" :class="submenu_active === 'exhibitions' ? 'show-submenu' : ''">
+                        <a @click="toggleSubmenu('exhibitions')" class="nav-link" href="#">
+                            <i class="mdi mdi-home menu-icon"></i>
+                            <span class="menu-title">Manage Exhibitions</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="submenu">
+                            <ul class="submenu-item">
+                                <li class="nav-item"><p class="normal-menu-header">Current</p></li>
+                                <li class="nav-item"><a class="nav-link" :href="$route('exhibitions.index')">Exhibitions</a></li>
+                                <li class="nav-item"><p class="normal-menu-header mt-3">Archive</p></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Exhibitions archive</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-item-extend" :class="submenu_active === 'resources' ? 'show-submenu' : ''">
+                        <a @click="toggleSubmenu('resources')" class="nav-link" href="#">
+                            <i class="mdi mdi-file-restore menu-icon"></i>
+                            <span class="menu-title">Resources</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="submenu">
+                            <ul class="submenu-item">
+                                <li class="nav-item"><p class="normal-menu-header">Documents</p></li>
+                                <li class="nav-item"><a class="nav-link" :href="$route('files.index')">Documents</a></li>
+                                <li class="nav-item"><p class="normal-menu-header mt-3">Selectables</p></li>
+                                <li class="nav-item"><a class="nav-link" :href="$route('journals.index')">Journals</a></li>
+                                <li class="nav-item"><a class="nav-link" :href="$route('books.index')">Books</a></li>
+                                <li class="nav-item"><a class="nav-link" :href="$route('items.index')">Items</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-item-extend" :class="submenu_active === 'settings' ? 'show-submenu' : ''">
+                        <a @click="toggleSubmenu('settings')" class="nav-link" href="#">
+                            <i class="mdi mdi-clipboard-text menu-icon"></i>
+                            <span class="menu-title">Setting</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="submenu">
+                            <ul class="submenu-item">
+                                <li class="nav-item"><p class="normal-menu-header">Users</p></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
+                                <li class="nav-item"><p class="normal-menu-header mt-3">Settings</p></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-item-extend" :class="submenu_active === 'imports' ? 'show-submenu' : ''">
+                        <a @click="toggleSubmenu('imports')" class="nav-link" href="#">
+                            <i class="mdi mdi-chart-bar menu-icon"></i>
+                            <span class="menu-title">Express import</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="submenu">
+                            <ul class="submenu-item">
+                                <li class="nav-item"><p class="normal-menu-header">Import</p></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Import journals</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Import books</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item d-block d-md-none nav-item-extend">
+                        <a class="nav-link" href="#">
+                            <i class="mdi mdi-power menu-icon"></i>
+                            <span class="menu-title">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</template>
+
+<script>
+import PixNavMenuFunctions from '../tools/pix-components/pix-nav-menu-functions.js'
+
+export default {
+    mixins: [
+        PixNavMenuFunctions
+    ],
+
+    props: {},
+
+    components: {},
+
+    data() {
+        return {
+            submenu_active: null,
+        }
+    },
+
+    methods: {
+        toggleSubmenu(submenu) {
+            if (this.submenu_active === submenu) {
+                this.submenu_active = null;
+            } else {
+                this.submenu_active = submenu;
+            }
+        }
+    },
+
+    mounted() {
+    },
+
+    created() {
+        this.emitter.on("set-menu-open", this.setOpen);
+    },
+
+    computed: {}
+}
+</script>
+
+<style scoped>
+</style>

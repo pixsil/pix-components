@@ -1,0 +1,51 @@
+<!-- v2 > uni_b2b -->
+
+<template>
+    <div>
+        <!-- include overlay-->
+        <pix-overlay :show="parent_loading">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <journal-edit-form @loading="setLoading" :journal="journal"></journal-edit-form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </pix-overlay>
+    </div>
+</template>
+
+<script>
+// v1
+import pixBaseCardFunctions from './pix-card-functions.js';
+
+export default {
+    mixins: [pixBaseCardFunctions],
+
+    props: {},
+
+    components: {},
+
+    data() {
+        return {
+        }
+    },
+
+    methods: {
+    },
+
+    mounted() {
+        this.initEdit()
+    },
+
+    created() {
+    },
+
+    computed: {}
+}
+</script>
+
+<style scoped>
+</style>

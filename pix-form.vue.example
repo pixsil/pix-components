@@ -1,0 +1,73 @@
+<!-- v2 > uni_b2b -->
+
+<template>
+    <div v-on:keyup.enter="onEnter">
+        <div>
+            <div v-if="done" class="alert alert-success" role="alert">
+                Data has been saved successfully.
+            </div>
+        </div>
+        <div>
+            <div class="row mb-3">
+                <div class="col-3">
+                    <label class="col-form-label">Quantity</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" v-model="vueForm.formData.quantity">
+                    <pix-validate field="quantity" :vue-form="vueForm"></pix-validate>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+// v2
+import pixBaseFormFunctions from '../../tools/pix-components/pix-form-functions.js';
+
+export default {
+    mixins: [
+        pixBaseFormFunctions,
+    ],
+
+    props: {},
+
+    components: {},
+
+    data() {
+        return {
+            form_type: 'edit',
+            vueForm: new VueForm({}),
+        }
+    },
+
+    methods: {
+        loadData() {
+            this.vueForm.get(this.$route('api.deliveries.edit'))
+                .then(response => this.onLoadDataSuccess())
+                .catch(error => this.onError())
+        },
+        onSubmit() {
+            this.setLoading(true);
+
+            this.vueForm.patch(this.$route('api.settings.store', setting.id))
+                .then(response => this.onSuccess())
+                .catch(error => this.onError())
+        },
+    },
+
+    mounted() {
+    },
+
+    created() {
+        this.initEdit()
+    },
+
+    computed: {}
+}
+</script>
+
+<style scoped>
+
+
+</style>
