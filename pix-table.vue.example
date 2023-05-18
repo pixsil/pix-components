@@ -6,37 +6,26 @@
 </template>
 
 <script>
+import baseTableFunctions from "../../tools/pix-components/pix-table-functionalities.js";
+
 export default {
+    mixin: [
+        baseTableFunctions
+    ],
+
     props: {},
 
     components: {},
 
     data() {
         return {
-            loading: true,
         }
     },
 
     methods: {
-        // not in use anymore
-
-        // loadData() {
-        //     this.setLoading(true)
-        //     axios.get(this.$$route('api.xx'))
-        //         .then((response) => {
-        //             // handle success
-        //             this.xx = response.data;
-        //             this.setLoading(false)
-        //         })
-        // },
-        // setLoading(status) {
-        //     this.loading = status;
-        //     this.$$emit('loading', status);
-        // },
     },
 
     mounted() {
-        this.loadData();
     },
 
     created() {
