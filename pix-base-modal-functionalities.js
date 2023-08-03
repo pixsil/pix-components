@@ -1,6 +1,8 @@
 // v2 > uni_b2b -->
 
 import { Modal } from "bootstrap";
+import EventBus from "../../EventBus.js";
+
 
 export default {
     props: {},
@@ -43,8 +45,8 @@ export default {
     },
 
     created() {
-        this.emitter.on('open-modal', this.openModal)
-        this.emitter.on('close-modal', this.closeModal)
+        EventBus.on('open-modal', this.openModal)
+        EventBus.on('close-modal', this.closeModal)
     },
 
     computed: {}
