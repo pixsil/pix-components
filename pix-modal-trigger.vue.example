@@ -5,6 +5,8 @@
 </template>
 
 <script>
+
+import EventBus from "../EventBus";
 export default {
     props: {
         component: String,
@@ -21,7 +23,7 @@ export default {
 
     methods: {
         openModal(component) {
-            this.emitter.emit('open-modal', {component: component, attributes: this.$attrs});
+            EventBus.emit('open-modal', {component: component, attributes: this.$attrs});
         },
     },
 
