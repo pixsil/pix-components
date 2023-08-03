@@ -2,8 +2,7 @@
     <div>
         <div class="modal-header">
             <h5 class="modal-title"></h5>
-            <button v-if="loading === false" type="button" class="btn-close" @click="closeModal"
-                aria-label="Close"></button>
+            <button v-if="loading === false" type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
         </div>
@@ -14,7 +13,7 @@
 </template>
 
 <script>
-import baseModalMixin from "../../tools/pix-components/pix-slave-modal-functionalities.js";
+import baseModalMixin from "../tools/pix-components/pix-slave-modal.functionalities.js";
 
 export default {
     props: {},
