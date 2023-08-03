@@ -1,3 +1,6 @@
+
+import EventBus from "../../EventBus.js";
+
 export default {
 
     // this is needed to make sure classes of the button trigger will not be appied to the modal
@@ -11,7 +14,7 @@ export default {
 
     methods: {
         closeModal() {
-            this.emitter.emit('close-modal');
+            EventBus.emit('close-modal');
         },
         setLoading(status) {
             this.loading = status;
